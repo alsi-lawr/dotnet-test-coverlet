@@ -26,3 +26,12 @@ jobs:
         with:
           name: coverage-report
           path: ${{ steps.run-tests.outputs.coverage-report-path }}  # Use the output from the previous step to upload the report
+
+      - name: Upload to codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ steps.run-tests.outputs.coverage-report-path }}/*.covertura.xml
+          flags: unittests
+          name: codecov-coverage
+          fail_ci_if_error: true
