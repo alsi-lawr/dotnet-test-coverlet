@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const exec = require("@actions/exec");
+const script = require("./script");
 
 async function run() {
   try {
@@ -25,9 +26,10 @@ async function run() {
       '-e', `UNIT_TEST_EXCLUDE_FILES=${excludeFiles}`,
       '-e', `UNIT_TEST_EXCLUDE_MODULES=${excludeModules}`,
       '-e', `UNIT_TEST_COVERAGE_THRESHOLD=${threshold}`,
+      '-e', `UNIT_TEST_PROJECT=${project}`,
       '-w', '/workspace',
       imageName,
-      'bash', '-c', `/ci/test.sh /workspace/${project}`
+      'bash', '-c', script
     ]);
 
     // Optionally, set an output for the action (e.g., path to coverage report)

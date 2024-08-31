@@ -1,6 +1,4 @@
-#!/bin/bash
-
-UNIT_TEST_PROJECT=$1
+const script = `#!/bin/bash
 
 echo "Running unit tests for $UNIT_TEST_PROJECT"
 echo "Dotnet version used: "
@@ -48,3 +46,6 @@ reportgenerator "-reports:${UNIT_TEST_PROJECT}/lcov*.cobertura.xml" "-targetdir:
 
 # Copy the cobertura xml file for inline coverage analysis
 cp ${UNIT_TEST_PROJECT}/*.cobertura.xml ${UNIT_TEST_PROJECT}/report
+`;
+
+module.exports = script;
