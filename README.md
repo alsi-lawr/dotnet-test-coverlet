@@ -6,6 +6,7 @@ This reusable action runs unit tests on a .NET project and generates a code cove
 ![GitHub release)](https://img.shields.io/github/v/release/alsi-lawr/dotnet-test-coverlet)
 ![Licence](https://img.shields.io/github/license/alsi-lawr/dotnet-test-coverlet)
 ![GitHub :star:](https://img.shields.io/github/stars/alsi-lawr/dotnet-test-coverlet?style=social)
+[![codecov](https://codecov.io/github/alsi-lawr/dotnet-test-coverlet/graph/badge.svg)](https://codecov.io/github/alsi-lawr/dotnet-test-coverlet)
 
 ## Usage
 
