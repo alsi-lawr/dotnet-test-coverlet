@@ -37,13 +37,13 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  build-args: |
+    DOTNET_VERSION=${{ inputs.dotnet-version }}
   env:
     UNIT_TEST_PROJECT: ${{ inputs.project }} 
     UNIT_TEST_EXCLUDE_FILES: ${{ inputs.exclude-files }} 
     UNIT_TEST_EXCLUDE_MODULES: ${{ inputs.exclude-modules }} 
     UNIT_TEST_COVERAGE_THRESHOLD: ${{ inputs.threshold }} 
   args:
-    - '--build-arg'
-    - 'DOTNET_VERSION=${{ inputs.dotnet-version }}'
     - ${{ inputs.project }}
 
