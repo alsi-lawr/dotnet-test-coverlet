@@ -52,5 +52,5 @@ runs:
 
     - name: Set coverage report path output
       shell: bash
-      run: echo "coverage-report-path=/workspace/${{ inputs.project }}/report" >> $GITHUB_OUTPUT
+      run: echo "coverage-report-path=/workspace/${{ inputs.project }}/report" >> "$GITHUB_OUTPUT"
 
