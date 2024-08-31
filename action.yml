@@ -37,6 +37,4 @@ outputs:
 runs:
   using: 'node20'
   main: 'index.js'
-  env:
-    GITHUB_WORKSPACE: ${{ github.workspace }} 
 
