@@ -3,7 +3,7 @@
 This reusable action runs unit tests on a .NET project and generates a code coverage report. It supports configuration for custom test project paths, exclusion of files and modules from coverage, and setting a coverage threshold.
 
 ![Test Workflow](https://github.com/alsi-lawr/dotnet-test-coverlet/actions/workflows/test-action.yml/badge.svg)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/alsi-lawr/dotnet-test-coverlet/)
+![GitHub release)](https://img.shields.io/github/v/release/alsi-lawr/dotnet-test-coverlet)
 ![Licence](https://img.shields.io/github/license/alsi-lawr/dotnet-test-coverlet)
 ![GitHub :star:](https://img.shields.io/github/stars/alsi-lawr/dotnet-test-coverlet?style=social)
 

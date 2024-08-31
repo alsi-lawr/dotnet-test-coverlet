@@ -23,6 +23,13 @@ dotnet add $UNIT_TEST_PROJECT package coverlet.collector
 # Restore unit test project
 dotnet restore -s "https://api.nuget.org/v3/index.json" $UNIT_TEST_PROJECT
 
+# Sanitise Exclude Modules
+if [ -z "$UNIT_TEST_EXCLUDE_MODULES" ]; then
+    UNIT_TEST_EXCLUDE_MODULES="[xunit.*]*"
+else
+    UNIT_TEST_EXCLUDE_MODULES="[xunit.*]*,$UNIT_TEST_EXCLUDE_MODULES"
+fi
+
 # Run unit tests and collect code coverage
 dotnet build $UNIT_TEST_PROJECT
 export IS_CI="true"
@@ -33,8 +40,8 @@ dotnet test $UNIT_TEST_PROJECT \
   /p:Threshold=$UNIT_TEST_COVERAGE_THRESHOLD \
   /p:ThresholdType=line \
   /p:ThresholdStat=total \
-  /p:Exclude="[xunit.*]*,$UNIT_TEST_EXCLUDE_MODULES" \
-  /p:ExcludeByFile="$UNIT_TEST_EXCLUDE_FILES"
+  /p:Exclude=\"$UNIT_TEST_EXCLUDE_MODULES\" \
+  /p:ExcludeByFile=\"$UNIT_TEST_EXCLUDE_FILES\"
 
 # Generate code coverage report
 reportgenerator "-reports:${UNIT_TEST_PROJECT}/lcov*.cobertura.xml" "-targetdir:${UNIT_TEST_PROJECT}/report" "-reporttypes:Html"
