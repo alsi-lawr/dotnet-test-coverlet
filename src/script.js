@@ -42,10 +42,10 @@ dotnet test $UNIT_TEST_PROJECT \
   /p:ExcludeByFile=\"$UNIT_TEST_EXCLUDE_FILES\"
 
 # Generate code coverage report
-reportgenerator "-reports:${UNIT_TEST_PROJECT}/lcov*.cobertura.xml" "-targetdir:${UNIT_TEST_PROJECT}/report" "-reporttypes:Html"
+reportgenerator "-reports:$\{UNIT_TEST_PROJECT\}/lcov*.cobertura.xml" "-targetdir:$\{UNIT_TEST_PROJECT\}/report" "-reporttypes:Html"
 
 # Copy the cobertura xml file for inline coverage analysis
-cp ${UNIT_TEST_PROJECT}/*.cobertura.xml ${UNIT_TEST_PROJECT}/report
+cp $\{UNIT_TEST_PROJECT\}/*.cobertura.xml $\{UNIT_TEST_PROJECT\}/report
 `;
 
 module.exports = script;
