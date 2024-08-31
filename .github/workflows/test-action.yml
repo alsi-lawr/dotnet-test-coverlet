@@ -1,0 +1,28 @@
+name: 'test-action' 
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Run Unit Tests and Generate Coverage
+        id: run-tests
+        uses: ./
+        with:
+          project: 'test/Test.Project'
+          threshold: 80  # Example: Set coverage threshold to 80%
+          dotnet-version: '8.0'
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: ${{ steps.run-tests.outputs.coverage-report-path }}  # Use the output from the previous step to upload the report

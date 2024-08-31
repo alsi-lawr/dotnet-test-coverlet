@@ -1,0 +1,56 @@
+name: 'Run Unit Tests and Generate Code Coverage'
+
+description: 'Reusable action to run unit tests on a .NET project and generate a code coverage report.'
+
+inputs:
+  project:
+    description: |
+      The path to the .NET unit test project. 
+      The path should be relative to the repository root.
+    required: true
+  exclude-files:
+    description: |
+      Files to exclude from code coverage analysis.
+      Supports glob patterns.
+    required: false
+    default: ''
+  exclude-modules:
+    description: 'Modules to exclude from code coverage analysis'
+    required: false
+    default: ''
+  threshold:
+    description: 'Code coverage threshold percentage'
+    required: false
+    default: 0
+  dotnet-version:
+    description: 'The .NET SDK version to use'
+    default: '6.0'
+    options:
+      - '8.0'
+      - '7.0'
+      - '6.0'
+
+outputs:
+  coverage-report-path:
+    description: 'Path to the generated code coverage report directory'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Unit Tests in Docker
+      shell: bash
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/workspace \
+          -e UNIT_TEST_PROJECT=${{ inputs.project }} \
+          -e UNIT_TEST_EXCLUDE_FILES=${{ inputs.exclude-files }} \
+          -e UNIT_TEST_EXCLUDE_MODULES=${{ inputs.exclude-modules }} \
+          -e UNIT_TEST_COVERAGE_THRESHOLD=${{ inputs.coverage-threshold }} \
+          -w /workspace \
+        mcr.microsoft.com/dotnet/sdk:${{ inputs.dotnet-version }} \
+        bash -c "./src/test.sh ${{ inputs.project }}"
+
+    - name: Set coverage report path output
+      shell: bash
+      run: echo "coverage-report-path=/workspace/${{ inputs.project }}/report" >> $GITHUB_OUTPUT
+
