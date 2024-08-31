@@ -1,4 +1,4 @@
-name: 'Run Unit Tests and Generate Code Coverage'
+name: 'Dotnet Test Coverlet'
 
 description: 'Reusable action to run unit tests on a .NET project and generate a code coverage report.'
 
