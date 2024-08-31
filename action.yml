@@ -42,7 +42,8 @@ runs:
     UNIT_TEST_EXCLUDE_FILES: ${{ inputs.exclude-files }} 
     UNIT_TEST_EXCLUDE_MODULES: ${{ inputs.exclude-modules }} 
     UNIT_TEST_COVERAGE_THRESHOLD: ${{ inputs.threshold }} 
-    DOTNET_VERSION: ${{ inputs.dotnet-version }}
   args:
+    - '--build-arg'
+    - 'DOTNET_VERSION=${{ inputs.dotnet-version }}'
     - ${{ inputs.project }}
 
