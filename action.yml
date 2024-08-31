@@ -35,15 +35,8 @@ outputs:
     description: 'Path to the generated code coverage report directory'
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  build-args: |
-    DOTNET_VERSION=${{ inputs.dotnet-version }}
+  using: 'node20'
+  main: 'index.js'
   env:
-    UNIT_TEST_PROJECT: ${{ inputs.project }} 
-    UNIT_TEST_EXCLUDE_FILES: ${{ inputs.exclude-files }} 
-    UNIT_TEST_EXCLUDE_MODULES: ${{ inputs.exclude-modules }} 
-    UNIT_TEST_COVERAGE_THRESHOLD: ${{ inputs.threshold }} 
-  args:
-    - ${{ inputs.project }}
+    GITHUB_WORKSPACE: ${{ github.workspace }} 
 
