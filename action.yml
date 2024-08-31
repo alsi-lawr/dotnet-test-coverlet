@@ -35,22 +35,14 @@ outputs:
     description: 'Path to the generated code coverage report directory'
 
 runs:
-  using: 'composite'
-  steps:
-    - name: Run Unit Tests in Docker
-      shell: bash
-      run: |
-        docker run --rm \
-          -v ${{ github.workspace }}:/workspace \
-          -e UNIT_TEST_PROJECT=${{ inputs.project }} \
-          -e UNIT_TEST_EXCLUDE_FILES=${{ inputs.exclude-files }} \
-          -e UNIT_TEST_EXCLUDE_MODULES=${{ inputs.exclude-modules }} \
-        -e UNIT_TEST_COVERAGE_THRESHOLD=${{ inputs.threshold }} \
-          -w /workspace \
-        mcr.microsoft.com/dotnet/sdk:${{ inputs.dotnet-version }} \
-        bash -c "./src/test.sh ${{ inputs.project }}"
-
-    - name: Set coverage report path output
-      shell: bash
-      run: echo "coverage-report-path=/workspace/${{ inputs.project }}/report" >> "$GITHUB_OUTPUT"
+  using: 'docker'
+  image: 'mcr.microsoft.com/dotnet/sdk:${{ inputs.dotnet-version }}'
+  entrypoint: '/bin/bash'
+  env:
+    UNIT_TEST_PROJECT: ${{ inputs.project }} 
+    UNIT_TEST_EXCLUDE_FILES: ${{ inputs.exclude-files }} 
+    UNIT_TEST_EXCLUDE_MODULES: ${{ inputs.exclude-modules }} 
+    UNIT_TEST_COVERAGE_THRESHOLD: ${{ inputs.threshold }} 
+  args:
+    - './src/test.sh ${{ inputs.project }}'
 
