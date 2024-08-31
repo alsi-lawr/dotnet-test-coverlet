@@ -45,7 +45,7 @@ runs:
           -e UNIT_TEST_PROJECT=${{ inputs.project }} \
           -e UNIT_TEST_EXCLUDE_FILES=${{ inputs.exclude-files }} \
           -e UNIT_TEST_EXCLUDE_MODULES=${{ inputs.exclude-modules }} \
-          -e UNIT_TEST_COVERAGE_THRESHOLD=${{ inputs.coverage-threshold }} \
+        -e UNIT_TEST_COVERAGE_THRESHOLD=${{ inputs.threshold }} \
           -w /workspace \
         mcr.microsoft.com/dotnet/sdk:${{ inputs.dotnet-version }} \
         bash -c "./src/test.sh ${{ inputs.project }}"
