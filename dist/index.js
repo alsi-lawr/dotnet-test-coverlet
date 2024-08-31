@@ -28152,7 +28152,6 @@ async function run() {
       '-e', `UNIT_TEST_EXCLUDE_FILES=${excludeFiles}`,
       '-e', `UNIT_TEST_EXCLUDE_MODULES=${excludeModules}`,
       '-e', `UNIT_TEST_COVERAGE_THRESHOLD=${threshold}`,
-      '-e', `UNIT_TEST_PROJECT=${project}`,
       '-w', '/workspace',
       imageName,
       'bash', '-c', script
