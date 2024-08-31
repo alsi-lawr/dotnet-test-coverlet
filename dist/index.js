@@ -28094,7 +28094,7 @@ async function run() {
       '-e', `UNIT_TEST_COVERAGE_THRESHOLD=${threshold}`,
       '-w', '/workspace',
       imageName,
-      'bash', '-c', `"./src/test.sh ${project}"`
+      'bash', '-c', '"ls -al"'//`"./src/test.sh ${project}"`
     ]);
 
     // Optionally, set an output for the action (e.g., path to coverage report)
