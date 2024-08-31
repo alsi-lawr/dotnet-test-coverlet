@@ -36,13 +36,13 @@ outputs:
 
 runs:
   using: 'docker'
-  image: 'mcr.microsoft.com/dotnet/sdk:${{ inputs.dotnet-version }}'
-  entrypoint: '/bin/bash'
+  image: 'Dockerfile'
   env:
     UNIT_TEST_PROJECT: ${{ inputs.project }} 
     UNIT_TEST_EXCLUDE_FILES: ${{ inputs.exclude-files }} 
     UNIT_TEST_EXCLUDE_MODULES: ${{ inputs.exclude-modules }} 
     UNIT_TEST_COVERAGE_THRESHOLD: ${{ inputs.threshold }} 
+    DOTNET_VERSION: ${{ inputs.dotnet-version }}
   args:
-    - './src/test.sh ${{ inputs.project }}'
+    - ${{ inputs.project }}
 
