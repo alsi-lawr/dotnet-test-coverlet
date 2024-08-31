@@ -28098,7 +28098,7 @@ async function run() {
     ]);
 
     // Optionally, set an output for the action (e.g., path to coverage report)
-    core.setOutput("coverage-report-path", `/workspace/${project}/report`);
+    core.setOutput("coverage-report-path", `${project}/report`);
   } catch (error) {
     core.setFailed(`Action failed with error: ${error.message}`);
   }
