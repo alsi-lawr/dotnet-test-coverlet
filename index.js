@@ -19,14 +19,14 @@ async function run() {
     await exec.exec('docker', [
       'run',
       '--rm',
-      '-v ', `${workspace}:/workspace`,
+      '-v', `${workspace}:/workspace`,
       '-e', `UNIT_TEST_PROJECT=${project}`,
       '-e', `UNIT_TEST_EXCLUDE_FILES=${excludeFiles}`,
       '-e', `UNIT_TEST_EXCLUDE_MODULES=${excludeModules}`,
       '-e', `UNIT_TEST_COVERAGE_THRESHOLD=${threshold}`,
       '-w', '/workspace',
       imageName,
-      'bash -c', './src/test.sh', project
+      'bash -c', `"./src/test.sh ${project}"`
     ]);
 
     // Optionally, set an output for the action (e.g., path to coverage report)
