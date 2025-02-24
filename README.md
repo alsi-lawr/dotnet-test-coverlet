@@ -14,7 +14,7 @@ Use this action in your workflow by specifying the test project file path, any e
 
 ### Inputs
 
-- `project`: **Required**. The path to the `.csproj` file of the .NET unit test project. The path should be relative to the repository root.
+- `project`: **Required**. The path to the directory of the .NET unit test project. The path should be relative to the repository root.
 - `exclude-files`: **Optional**. Files to exclude from code coverage analysis. Supports glob patterns. Defaults to an empty string.
 - `exclude-modules`: **Optional**. Modules to exclude from code coverage analysis. Defaults to an empty string.
 - `threshold`: **Optional**. Code coverage threshold percentage. Defaults to `0`.
@@ -45,7 +45,7 @@ jobs:
         id: run-tests
         uses: alsi-lawr/dotnet-test-coverlet@v1
         with:
-          project: 'src/MyProject.Tests/MyProject.Tests.csproj'  # Specify the correct path to your test project file
+          project: 'src/MyProject.Tests'  # Specify the correct path to your test project directory
           exclude-files: '**/Migrations/*.cs'  # Example: Exclude migrations files
           threshold: 80  # Example: Set coverage threshold to 80%
           dotnet-version: '8.0'
