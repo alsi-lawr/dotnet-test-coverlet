@@ -25664,7 +25664,6 @@ dotnet tool install -g dotnet-reportgenerator-globaltool
 
 # Install required packages
 dotnet add $UNIT_TEST_PROJECT package coverlet.msbuild
-dotnet add $UNIT_TEST_PROJECT package coverlet.collector
 
 # Restore unit test project
 dotnet restore -s "https://api.nuget.org/v3/index.json" $UNIT_TEST_PROJECT

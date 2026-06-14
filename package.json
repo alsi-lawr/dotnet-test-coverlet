@@ -1,6 +1,6 @@
 {
   "name": "dotnet-test-coverlet",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "This reusable action runs unit tests on a .NET project and generates a code coverage report. It supports configuration for custom test project paths, exclusion of files and modules from coverage, and setting a coverage threshold.",
   "main": "dist/index.js",
   "directories": {
