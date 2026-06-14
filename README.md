@@ -14,11 +14,11 @@ Use this action in your workflow by specifying the test project file path, any e
 
 ### Inputs
 
-- `project`: **Required**. The path to the directory of the .NET unit test project. The path should be relative to the repository root.
+- `project`: **Required**. The path to the directory of the .NET unit test project, or to the `.csproj` file. The path should be relative to the repository root.
 - `exclude-files`: **Optional**. Files to exclude from code coverage analysis. Supports glob patterns. Defaults to an empty string.
 - `exclude-modules`: **Optional**. Modules to exclude from code coverage analysis. Defaults to an empty string.
 - `threshold`: **Optional**. Code coverage threshold percentage. Defaults to `0`.
-- `dotnet-version`: **Optional**. The .NET SDK version to use. Defaults to `6.0`.
+- `dotnet-version`: **Optional**. The .NET SDK version to use. Defaults to `10.0`.
 
 ### Outputs
 
@@ -69,6 +69,7 @@ This action can be seamlessly chained with an artifact upload step to store the 
 
 - **Dockerized Execution**: This action runs inside a Docker container with the specified .NET SDK version, ensuring a consistent environment for running tests and generating coverage reports.
 - **Customization**: You can customize the exclusions and thresholds to suit your project's needs, ensuring that only relevant parts of your codebase are included in the coverage analysis.
+- **Microsoft Testing Platform**: When `global.json` sets `test.runner` to `Microsoft.Testing.Platform`, this action pins the Microsoft Testing Platform packages to the latest stable versions, then uses `coverlet.MTP` and the `--coverlet` runner option. `coverlet.MTP` does not currently enforce coverage thresholds, so threshold checks only run on the default `coverlet.msbuild` path.
 
 ## Contributing
 
