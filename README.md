@@ -1,12 +1,18 @@
-# Run Unit Tests and Generate Code Coverage
+<div align="center">
+
+<img src="assets/dotnet-test-coverlet.svg" width="128" height="128" alt="dotnet-test-coverlet logo">
+
+# dotnet-test-coverlet
+
+**Run .NET tests and produce enforceable coverage reports.**
+
+[![Action tests](https://github.com/alsi-lawr/dotnet-test-coverlet/actions/workflows/test-action.yml/badge.svg?branch=master)](https://github.com/alsi-lawr/dotnet-test-coverlet/actions/workflows/test-action.yml)
+[![Release](https://img.shields.io/github/v/release/alsi-lawr/dotnet-test-coverlet?display_name=tag&sort=semver)](https://github.com/alsi-lawr/dotnet-test-coverlet/releases/latest)
+[![Coverage](https://codecov.io/github/alsi-lawr/dotnet-test-coverlet/graph/badge.svg)](https://codecov.io/github/alsi-lawr/dotnet-test-coverlet)
+
+</div>
 
 This reusable action runs unit tests on a .NET project and generates a code coverage report. It supports configuration for custom test project paths, exclusion of files and modules from coverage, and setting a coverage threshold.
-
-![Test Workflow](https://github.com/alsi-lawr/dotnet-test-coverlet/actions/workflows/test-action.yml/badge.svg)
-![GitHub release)](https://img.shields.io/github/v/release/alsi-lawr/dotnet-test-coverlet)
-![Licence](https://img.shields.io/github/license/alsi-lawr/dotnet-test-coverlet)
-![GitHub :star:](https://img.shields.io/github/stars/alsi-lawr/dotnet-test-coverlet?style=social)
-[![codecov](https://codecov.io/github/alsi-lawr/dotnet-test-coverlet/graph/badge.svg)](https://codecov.io/github/alsi-lawr/dotnet-test-coverlet)
 
 ## Usage
 
